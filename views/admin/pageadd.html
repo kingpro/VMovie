@@ -1,0 +1,76 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<title>添加专题</title>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<link href="/static/css/admin.css" rel="stylesheet" type="text/css" />
+<script type="text/javascript" src="/static/js/jquery.min.js"></script>
+<script type="text/javascript" src="/static/js/admin.js"></script> 
+<script type="text/javascript" src="/static/editor/kindeditor.js"></script>
+<script type="text/javascript" src="/static/editor/lang/zh_CN.js"></script>
+</head>
+<body>
+<form method="post" id="form1" action="{{.AdminDir}}page/save" onsubmit="return checkpost();">
+<div id="main">
+<h2>添加/编辑 专题</h2>
+<div class="content" style="margin-top:0px;">
+  <table  border="0" align="center" cellpadding="0" cellspacing="0" class="add">
+    <td>专题名称 *</td>
+    <td><input name="name" type="text" id="name" class="input" style="width:230px" placeholder="专题名称"/></td>
+    </tr>
+    <tr>
+      <td>目录英名文 *</td>
+      <td>
+        <input type="text" name="ename" id="ename"  class="input" style="width:230px;" placeholder="专题的目录路路径，如:2016meiju" />
+      </td>
+    </tr>               
+    <tr>
+      <td valign="top">专题内容 *</td>
+      <td valign="top">
+      <textarea name="content" style="width:88%;height:360px;visibility:hidden;"></textarea>
+      </td>
+    </tr>
+    </tr>   
+     <tr>
+      <td>SEO标题 *</td>
+      <td><input name="title" type="text" id="title" class="input" style="width:400px" value="{{.info.Title}}" placeholder="文章标题" /></td>
+    </tr>
+     <tr>
+      <td>SEO关键字 *</td>
+      <td><input name="keywords" type="text" id="keywords" placeholder="多个用,分开" class="input" value="{{.info.Keywords}}" style="width:400px"/> </td>
+    </tr>
+      <tr>
+      <td>SEO页面介绍 *</td>
+      <td><input name="description" type="text" id="description" class="input" style="width:700px" value="{{.info.Description}}" /></td>
+    </tr>           
+    <tr>
+      <td valign="top">状态：</td>
+      <td valign="top" colspan="3">
+      <select name="status" id="status" class="select">
+           <option value="0" selected="selected">==状态==</option>
+           <option value="-1">前台隐藏</option>
+           <option value="0">正常状态</option>
+         </select></td>
+    </tr>   
+    <tr>
+      <td></td>
+      <td >
+      <input type="hidden" name="id" value="{{.info.Id}}" />
+      <input type="submit" name="enter" value=" 保存专题 " id="enter" class="button bghuang" /> <input type="button" class="button" value=" 返回列表 "  onclick="self.location.href='{{.AdminDir}}page/list';"/></td>
+    </tr>
+  </table>
+</div>
+</div>
+</form>
+<script type="text/javascript">
+       var editor;
+      KindEditor.ready(function(K) {
+        editor = K.create('textarea[name="content"]', {
+          resizeType : 1,
+          allowPreviewEmoticons : false,
+          allowImageUpload : true,
+        });
+      });  
+</script>
+</body>
+</html>

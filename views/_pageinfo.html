@@ -1,0 +1,43 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<title>{{.info.Title}}|爱美剧</title>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta name="keywords" content="{{.info.Keywords}}" />
+<meta name="Description" content="{{.info.Description}}" />
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+<link href="/static/css/vmovie.css" rel="stylesheet" type="text/css" />
+<script type="text/javascript" src="/static/js/jquery.min.js"></script>
+</head>
+<body>
+{{template "header"}}
+	<div class="box">
+		<div class="detail">
+			<div class="location">现在的位置：<a href="/">首页</a> > <a href="/p/">美剧资讯</a> > 文章正文</div>
+			<div class="clear"></div>
+			<div class="movie">
+				<h3>{{.info.Title}}</h3>
+				<div class="about">发布时间：{{dateformat .info.Addtime "2006-01-02 15:04"}} / 责任编辑：{{.info.Editor}}</div>
+				<div class="clear"></div>
+				<div class="pagetext">
+					{{str2html .info.Content}}
+				</div>
+			</div>
+			<div class="panel">
+				<ul>
+					<li class="title">热门美剧</li>
+					{{range .hostlist}}
+					<li><a href="/v/{{.Id}}/" target="_blank">{{.Title}}</a></li>{{end}}
+				</ul>				
+				<ul>
+					<li class="title">随便看看</li>
+					{{range .randlist}}
+					<li><a href="/v/{{.Id}}/" target="_blank">{{.Title}}</a></li>{{end}}		
+				</ul>		
+			</div>
+		</div>
+	</div>
+	{{template "footer"}}		
+</body>
+</html>
