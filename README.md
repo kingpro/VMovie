@@ -20,7 +20,7 @@ golang 1.6+
 
 
 ###网站地址
-https://zituo.net
+https://22v.net
 
 ###手机版
-https://m.zituo.net
+https://m.22v.net
